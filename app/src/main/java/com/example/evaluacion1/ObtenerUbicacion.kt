@@ -49,9 +49,9 @@ class ObtenerUbicacion : ComponentActivity() {
         ActivityResultContracts.RequestMultiplePermissions()
     ){
         if(
-            (it[android.Manifest.permission.ACCESS_FINE_LOCATION]?:false)
+            (it[Manifest.permission.ACCESS_FINE_LOCATION]?:false)
             or
-            (it[android.Manifest.permission.ACCESS_COARSE_LOCATION]?:false)
+            (it[Manifest.permission.ACCESS_COARSE_LOCATION]?:false)
         ){
             gpsVM.permisoUbicacionOK()
         }
@@ -124,7 +124,6 @@ fun PantallaGpsUI(gpsVM: GpsVM,
         AndroidView(
             factory = {
                 MapView(it).apply{
-
                     setTileSource(TileSourceFactory.MAPNIK)
                     org.osmdroid.config.Configuration.getInstance().userAgentValue = contexto.packageName
                     controller.setZoom(15.0)
@@ -151,8 +150,8 @@ fun PantallaGpsUI(gpsVM: GpsVM,
     ){
         Button(onClick = {
             /* Al guardar imagen se redirecciona a la vista principal de registro y muestra de imagenes*/
-            val intent = Intent(contexto, RegistrarFoto::class.java)
-            intent.putExtra("nombre", nombre)
+            val intent = Intent(contexto, RegistrarPlanificador::class.java)
+            intent.putExtra("nombre", "")
             intent.putExtra("latitud", gpsVM.latitud.value.toString())
             intent.putExtra("longitud", gpsVM.longitud.value.toString())
             contexto.startActivity(intent)

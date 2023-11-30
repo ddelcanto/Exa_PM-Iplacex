@@ -59,6 +59,12 @@ fun PlanUI(){
         Spacer(modifier =  Modifier.height(30.dp))
         Button(onClick={
             contexto.startActivity(Intent(contexto, RegistrarPlanificador::class.java))
+
+            val intent = Intent(contexto, RegistrarPlanificador::class.java)
+            intent.putExtra("nombre", "Sin datos")
+            intent.putExtra("latitud", "4121212")
+            intent.putExtra("longitud","Sin datos")
+            contexto.startActivity(intent)
         }){
             Text(text ="Registrar lugar a visitar")
         }
