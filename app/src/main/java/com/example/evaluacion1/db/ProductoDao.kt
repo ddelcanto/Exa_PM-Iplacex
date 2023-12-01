@@ -18,12 +18,12 @@ interface ProductoDao {
     fun contar():Int
 
     @Insert
-    fun insertar(producto:Producto)
+    fun insertar(producto: Producto)
 
     @Update
-    fun actualizar(producto:Producto)
+    fun actualizar(producto: Producto)
     @Delete
-    fun eliminar(producto:Producto)
+    fun eliminar(producto: Producto)
 
 
 }

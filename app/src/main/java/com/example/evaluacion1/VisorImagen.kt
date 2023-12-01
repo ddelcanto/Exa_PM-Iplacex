@@ -69,7 +69,7 @@ fun ImagenPantallaCompletaUI(uri: Uri) {
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Button(onClick={
-            contexto.startActivity(Intent(contexto, RegistrarFoto::class.java))
+            contexto.startActivity(Intent(contexto, RegistrarPlanificador::class.java))
         }){
             Text(text = "Atrás")
         }

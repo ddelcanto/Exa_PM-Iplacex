@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 class InicioPlanificador : ComponentActivity() {
@@ -40,6 +41,9 @@ class InicioPlanificador : ComponentActivity() {
 fun PlanUI(){
 
     val contexto =  LocalContext.current
+
+    val msg_btnRegistrar = stringResource(R.string.msg_NuevoLugar)
+    val msg_btnListar = stringResource(R.string.msg_btnListar)
 
     Column(
 
@@ -62,17 +66,17 @@ fun PlanUI(){
 
             val intent = Intent(contexto, RegistrarPlanificador::class.java)
             intent.putExtra("nombre", "Sin datos")
-            intent.putExtra("latitud", "4121212")
+            intent.putExtra("latitud", "Sin datos")
             intent.putExtra("longitud","Sin datos")
             contexto.startActivity(intent)
         }){
-            Text(text ="Registrar lugar a visitar")
+            Text(text =msg_btnRegistrar)
         }
         Spacer(modifier =  Modifier.height(30.dp))
         Button(onClick={
 
         }){
-            Text(text ="Ver lista de lugares a visitar")
+            Text(text =msg_btnListar)
         }
 
     }

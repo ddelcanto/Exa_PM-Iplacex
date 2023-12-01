@@ -8,9 +8,7 @@ import androidx.room.Update
 
 @Dao
 interface PlanificadorDao {
-    /*Query que obtiene todos los registros de la BD ordenados por el campo COMPRADO
-    de forma ASC.,
-    * No en la cesta es 0 y en la cesta es 1 */
+
     @Query("SELECT * FROM Planificador order by orden asc ")
     fun getAll(): List<Planificador>
 

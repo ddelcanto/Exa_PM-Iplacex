@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -76,6 +77,8 @@ class RegistrarPlanificador : ComponentActivity() {
                 costoTraslado,
                 comentario)}
         }
+
+
     }
 
 
@@ -107,11 +110,13 @@ class RegistrarPlanificador : ComponentActivity() {
             // Aca cambiamos al hilo principal para actualizar la UI.
             withContext(Dispatchers.Main) {
                 /*Se llama a la funcion que genera el ALERT, se le pasan los parametros correspondientes*/
-                dialogoInformacionRegistrar(contexto, resources.getString(R.string.msg_reg_prod), resources.getString(R.string.msg_alerta_titulo) )
+                dialogoInformacionRegistrar(contexto, resources.getString(R.string.msg_RegistrarMensaje), resources.getString(R.string.msg_alerta_titulo) )
             }
         }
 
     }
+
+
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -124,6 +129,11 @@ fun RegPlanUI(RegPlan: (orden: Int,
                         costoTraslado: Int,
                         comentario: String
               ) -> Unit){
+
+
+
+    stringResource(R.string.msg_btnListar)
+    stringResource(R.string.msg_btnListar)
 
     val contexto = LocalContext.current
 
@@ -150,7 +160,7 @@ fun RegPlanUI(RegPlan: (orden: Int,
         )
         Spacer(modifier =  Modifier.height(10.dp))
         Text(
-            text = "Registrar nuevo lugar",
+            text = stringResource(R.string.msg_NuevoLugar),
             style = TextStyle(
                 fontSize = 20.sp,
                 color = Color.DarkGray
@@ -166,13 +176,13 @@ fun RegPlanUI(RegPlan: (orden: Int,
         TextField(
             value = nombreLocacion,
             onValueChange = setNombreLocacion,
-            label = { Text(text = "Nombre ubicacion") }
+            label = { Text(text = stringResource(R.string.msg_Nombre)) }
         )
         Spacer(modifier =  Modifier.height(10.dp))
         TextField(
             value = orden,
             onValueChange = setOrden,
-            label = { Text(text = "Orden de visita") }
+            label = { Text(text = stringResource(R.string.msg_OrdenVisita)) }
         )
         Spacer(modifier =  Modifier.height(10.dp))
         Divider(
@@ -184,13 +194,13 @@ fun RegPlanUI(RegPlan: (orden: Int,
         TextField(
             value = costoAlojamiento,
             onValueChange = setCostoAlojamiento,
-            label = { Text(text = "Costo alojamiento") }
+            label = { Text(text = stringResource(R.string.msg_CostoAlojamiento)) }
         )
         Spacer(modifier =  Modifier.height(10.dp))
         TextField(
             value = costoTraslado,
             onValueChange = setCostoTraslado,
-            label = { Text(text = "Costo traslado") }
+            label = { Text(text = stringResource(R.string.msg_CostoTraslado)) }
         )
         Spacer(modifier =  Modifier.height(10.dp))
         Divider(
@@ -202,22 +212,22 @@ fun RegPlanUI(RegPlan: (orden: Int,
         TextField(
             value = latitud,
             onValueChange = setLatitud,
-            label = { Text(text = "Latitud") }
+            label = { Text(text = stringResource(R.string.msg_Latitud)) }
         )
         TextField(
             value = longitud,
             onValueChange = setLongitud,
-            label = { Text(text = "Longitud") }
+            label = { Text(text = stringResource(R.string.msg_Longitud)) }
         )
         Spacer(modifier =  Modifier.height(5.dp))
         Button(onClick={
-            val intent = Intent(contexto, ObtenerUbicacion::class.java)
-            intent.putExtra("nombre", nombreLocacion)
-            intent.putExtra("latitud", longitud)
-            intent.putExtra("longitud", latitud)
+            val intent = Intent(contexto, RegistrarFoto::class.java)
+            intent.putExtra("nombre", "Sin datos")
+            intent.putExtra("latitud", "Sin datos")
+            intent.putExtra("longitud", "Sin datos")
             contexto.startActivity(intent)
         }){
-            Text(text ="Buscar ubicación en el mapa.")
+            Text(text =stringResource(R.string.msg_Mapa))
         }
         Spacer(modifier =  Modifier.height(10.dp))
         Divider(
@@ -234,9 +244,13 @@ fun RegPlanUI(RegPlan: (orden: Int,
         )
         Spacer(modifier =  Modifier.height(5.dp))
         Button(onClick={
-
+            val intent = Intent(contexto, RegistrarFoto::class.java)
+            intent.putExtra("nombre", nombreLocacion)
+            intent.putExtra("latitud", "Sin datos")
+            intent.putExtra("longitud", "Sin datos")
+            contexto.startActivity(intent)
         }){
-            Text(text ="Capturar foto")
+            Text(text =stringResource(R.string.msg_CapturarFoto))
         }
         Spacer(modifier =  Modifier.height(5.dp))
         Divider(
@@ -248,7 +262,7 @@ fun RegPlanUI(RegPlan: (orden: Int,
         OutlinedTextField(
             value = comentario,
             onValueChange = { newText -> comentario = newText },
-            label = { Text("Comentario | Detalle") },
+            label = { Text(stringResource(R.string.msg_Comentario)) },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Default),
             maxLines = 20
@@ -257,7 +271,7 @@ fun RegPlanUI(RegPlan: (orden: Int,
             RegPlan(orden.toInt(), nombreLocacion , uriImagen , latitud,longitud ,
                     costoTraslado.toInt(), costoAlojamiento.toInt(), comentario)
         }){
-            Text(text ="Ver lista de lugares a visitar")
+            Text(text =stringResource(R.string.msg_Registrar))
         }
 
     }

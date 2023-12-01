@@ -6,16 +6,27 @@
 
     <string name="msg_alerta_titulo">Information</string>
 
-    <string name="nombre_main">LIST OF PRODUCTS</string>
-    <string name="msg_agregar">The product has been added to the cart.</string>
-    <string name="msg_quitar">The product has been removed from the basket.</string>
-    <string name="msg_eliminar">The product has been removed.</string>
-    <string name="reg_btn_reg_main">REGISTER PRODUCT</string>
 
-    <string name="reg_btn_reg">Register</string>
-    <string name="reg_ing_nombre">Enter name</string>
-    <string name="reg_btn_lista">PRODUCT LIST</string>
-    <string name="msg_reg_prod">The product was successfully registered, it will be redirected to the product list.</string>
+    <string name="msg_btnListar">List places</string>
+    <string name="msg_NuevoLugar">Register new place</string>
+    <string name="msg_OrdenVisita">Order</string>
+    <string name="msg_CostoAlojamiento">Accommodation cost</string>
+    <string name="msg_CostoTraslado">Transfer cost</string>
+    <string name="msg_Latitud">Latitude</string>
+    <string name="msg_Longitud">Longitude</string>
+    <string name="msg_Mapa">Find location</string>
+    <string name="msg_CapturarFoto">Capture photo</string>
+    <string name="msg_Comentario">Comment</string>
+    <string name="msg_Registrar">To register</string>
+    <string name="msg_RegistrarMensaje">You have successfully registered</string>
+    <string name="msg_Nombre">Name</string>
+    <string name="msg_ListaNombre">List of places</string>
+    <string name="msg_agregar">The place has been added</string>
+    <string name="msg_quitar">The place has been removed</string>
+    <string name="msg_eliminar">The place has been removed.</string>
+
+
+
 
 
     <!-- Strings used for fragments for navigation -->
@@ -23,6 +34,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <string name="title_activity_obtener_ubicacion">ObtenerUbicacion</string>
+    <string name="title_activity_inicio_planificador">InicioPlanificador</string>
+    <string name="title_activity_registrar_planificador">RegistrarPlanificador</string>
 
 
 

@@ -150,7 +150,7 @@ fun PantallaGpsUI(gpsVM: GpsVM,
     ){
         Button(onClick = {
             /* Al guardar imagen se redirecciona a la vista principal de registro y muestra de imagenes*/
-            val intent = Intent(contexto, RegistrarPlanificador::class.java)
+            val intent = Intent(contexto, RegistrarFoto::class.java)
             intent.putExtra("nombre", "")
             intent.putExtra("latitud", gpsVM.latitud.value.toString())
             intent.putExtra("longitud", gpsVM.longitud.value.toString())

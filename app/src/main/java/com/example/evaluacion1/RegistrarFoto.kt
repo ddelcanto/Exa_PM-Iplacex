@@ -148,12 +148,7 @@ fun PantallaFormUI(nombre:String, latitud:String, longitud:String){
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier =  Modifier.height(30.dp))
-            TextField(
-                value = nombre,
-                onValueChange = setNombreLocacion,
-                readOnly = true,
-                label = { Text(text = "Nombre del lugar") }
-            )
+
             Spacer(modifier =  Modifier.height(5.dp))
             TextField(
                 value = latitud,
@@ -178,7 +173,7 @@ fun PantallaFormUI(nombre:String, latitud:String, longitud:String){
             Button(onClick={
                 /*Se envían los datos a la actividad de ObtenerUbicación.kt*/
                 val intent = Intent(contexto, ObtenerUbicacion::class.java)
-                intent.putExtra("nombre", nombre)
+                intent.putExtra("nombre", "")
                 intent.putExtra("latitud", latitud)
                 intent.putExtra("longitud", longitud)
                 contexto.startActivity(intent)
@@ -191,6 +186,20 @@ fun PantallaFormUI(nombre:String, latitud:String, longitud:String){
             //Se llama a la funcion que obtiene todas las imagenes guardadas en la carpeta publica
             MostrarImagenesPublicas(contexto)
 
+        }
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Button(onClick={
+                val intent = Intent(contexto, RegistrarPlanificador::class.java)
+                intent.putExtra("nombre", "Sin datos")
+                intent.putExtra("latitud", latitud)
+                intent.putExtra("longitud",longitud)
+            }){
+                Text(text = "Atrás")
+            }
         }
 
 }
